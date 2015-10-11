@@ -1,0 +1,26 @@
+<template name="header">
+  <div class="container">
+    <nav class="nav  navbar-inverse navbar-fixed-top navbar-header" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+            <span class="sr-only">MEETU</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{pathFor 'home'}}">MyApplication</a>
+          <!--<a class="btn btn-default navbar-btn dropdown-toggle "></a>-->
+        </div>
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="nav navbar-nav navbar-right">
+            <li  class="btn-danger"><a href="{{ pathFor 'discussion'}}" >Discussion</a></li>
+            <li><a href="{{pathFor 'post'}}" class="">PostArticle</a></li>
+            <li><a class="" href="{{ pathFor 'manageDiscussion'}}">manageDiscussion</a></li>
+            {{> loginButtons}}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</template>

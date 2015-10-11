@@ -1,0 +1,6 @@
+<template name="postItem">
+  <a href="#" class="list-group-item layout">
+    <h4 class="list-group-item-heading"><a href="{{pathFor "singlePage" postId=_id}}">{{title}}</a> <span  class="text-right" ><a href="{{pathFor 'editorPost' postId=_id }}">编辑</a></span></h4>
+    <p class="list-group-item-text">{{content}} <span class="badge">7</span></p>
+  </a>
+</template>

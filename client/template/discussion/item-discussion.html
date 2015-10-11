@@ -1,0 +1,24 @@
+<template name="itemDiscussion">
+    <div class="" style="border: solid 1px #cccccc; margin-top: 10px ">
+        <div style=" border-bottom: dashed #cccccc 1px">
+            <p><img src="/images/luntan.jpg" /> <span class="glyphicon glyphicon glyphicon-user">{{userId}}</span> <span class="glyphicon glyphicon-time">{{dateFormate createdAt }}</span></p>
+        </div>
+        <div style="padding-left: 100px;">
+            <p><h3><a href="{{pathFor "singleDisc" discId=_id }}">{{subject}}</a></h3></p>
+            <p>{{{content}}}</p>
+            <p>
+                <span class="glyphicon glyphicon-thumbs-up">赞</span> <span class="badge">{{upVoteCount}}</span>
+                <span class="glyphicon glyphicon-comment"></span><span class="badge">{{ commentCount}}</span>
+            </p>
+
+        </div>
+    </div>
+  <!--<tr>
+    <td><a href="{{pathFor "singleDisc" discId=_id }}">{{subject}}</a></td>
+    <td>{{content}}</td>
+    <td>{{userId}}</td>
+    <td>{{commentCount}}</td>
+    &lt;!&ndash;<td>{{userId}}</td>&ndash;&gt;
+    <td>{{ dateFormate createdAt }}</td>
+  </tr>-->
+</template>

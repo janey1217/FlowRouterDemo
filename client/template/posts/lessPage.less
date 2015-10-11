@@ -1,0 +1,21 @@
+/**
+ * Created by jym on 2015/9/12.
+ */
+@color-base : #3bafdA;
+@color-complement : spin(@color-base, 360/3);
+@color-primary   : mix(@color-base, mediumvioletred);
+@color-secondary : mix(@color-base, lightseagreen);
+@color-tertiary  : mix(@color-base, mintcream);
+@color-focus : lighten(@color-base, 20%); //#684b94
+
+.navbar-inverse {
+ // background-color: @color-secondary !important;
+}
+.divSetWidth(@width, @height){
+  width:@width ;
+  height: @height;
+}
+.divwidth{
+  .divSetWidth(200px, 200px);
+  background-color: @color-focus;
+}

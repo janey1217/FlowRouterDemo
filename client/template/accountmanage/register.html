@@ -1,0 +1,24 @@
+<template name="register">
+  <h1>App Sign In Form</h1>
+  <div class="app-cam">
+    <div class="cam"><img src="images/cam.png" class="img-responsive" alt="" /></div>
+    <form>
+      <input type="text" class="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}" >
+      <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+      <div class="submit"><input type="submit" onclick="myFunction()" value="Sign in" ></div>
+      <div class="clear"></div>
+      <div class="buttons">
+        <ul>
+          <li><a href="#" class="hvr-sweep-to-right">Sign in with Facebook</a></li>
+          <li><a href="#" class="hvr-sweep-to-left">Sign in with Twitter</a></li>
+          <div class="clear"></div>
+        </ul>
+      </div>
+      <div class="new">
+        <p><a href="#">Forgot Password ?</a></p>
+        <p class="sign">New here ?<a href="#"> Sign Up</a></p>
+        <div class="clear"></div>
+      </div>
+    </form>
+  </div>
+</template>

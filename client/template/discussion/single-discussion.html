@@ -1,0 +1,45 @@
+<template name="singleDiscussion">
+
+  {{#with discussions}}
+    {{> discussionItem}}
+  {{else}}
+    <p>No data found!</p>
+  {{/with}}
+
+</template>
+
+<template name="discussionItem">
+  <table class="table" >
+    <tr>
+      <th>
+        <img src="/images/luntan.jpg" />
+      </th>
+      <th>
+        <span>发帖时间:{{dateFormate createdAt }}</span><span><a href="#{{_id}}" id="{{_id}}">锚</a></span>
+        <span><a href="{{pathFor "editDisc" discId=_id }}">编辑</a></span>
+        <!--<span><a href="#" class="btn deleDisc">删除</a></span>-->
+        <span><a href="#" class="btn replyBtn">回复</a></span><span><a href="#" class="btn upVote">👍</a></span>
+      </th>
+    </tr>
+    <tr>
+      <td>发帖人</td>
+      <td>
+        <h3>{{subject}}</h3>
+        <p>
+          {{{content}}}
+        </p>
+      </td>
+    </tr>
+  </table>
+  <table class="table" >
+    {{#each commentItems}}
+      {{> commentItem}}
+    {{/each}}
+  </table>
+  {{#onlyIfLogin}}
+    {{> comment}}
+    {{else}}
+     <p>请先登录！</p>
+  {{/onlyIfLogin}}
+
+</template>
