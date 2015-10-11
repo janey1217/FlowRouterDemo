@@ -1,5 +1,5 @@
 /**
- * Created by jym on 2015/9/29.
+ * Created by jym on 2015/9/29.s
  */
 
 UI.registerHelper('dateFormate', function(thing) {
