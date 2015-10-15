@@ -24,8 +24,8 @@ Template.startDiscussion.events({
     console.log(str);
     if(str!=""&&str != null)
     {
-      console.log("hello");
       str = str.slice(0,4);
+      console.log("");
     }
     var post ={subject:subject, content: content, imgPath:str};
     post= _.extend(post,{

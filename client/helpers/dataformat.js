@@ -10,6 +10,10 @@ UI.registerHelper('dateFormate', function(thing) {
   //return  str.toLocaleDateString()+" "+str.toLocaleTimeString();
 });
 
+UI.registerHelper('contentFormate', function (content) {
+  //content.substring(0,content.lastIndexOf('<img'));
+  return (content.substring(0, content.indexOf('<img'))).replace(/<[^>]+>/g,"").substring(0,150) ;
+});
 UI.registerHelper("userIdFormate", function (userId) {
 
 });

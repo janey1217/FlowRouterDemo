@@ -21,7 +21,12 @@ Template.editDiscussion.events({
     e.preventDefault();
     var subject = $(e.target).find('[name=subject]').val();
     var content = params.$("#content").html();
-    var post ={subject:subject, content: content};
+    var re =  /<img(.+?)src=""*([^\s]+?)""*(\s|>)/ig;
+    var imgPath = content.match(re);
+    if(imgPath!=""&& imgPath != null) {
+      imgPath = imgPath.slice(0, 4);
+    }
+    var post = {subject: subject, content: content, imgPath: imgPath};
     var updateId=this._id;
     Discussion.update(updateId, {$set: post}, function (error, result) {
       if(result)
