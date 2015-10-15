@@ -3,9 +3,10 @@
         <div style=" border-bottom: dashed #cccccc 1px">
             <p><img src="/images/luntan.jpg" /> <span class="glyphicon glyphicon glyphicon-user">{{userId}}</span> <span class="glyphicon glyphicon-time">{{dateFormate createdAt }}</span></p>
         </div>
-        <div style="padding-left: 100px;">
+        <div style="">
             <p><h3><a href="{{pathFor "singleDisc" discId=_id }}">{{subject}}</a></h3></p>
-            <p>{{{content}}}</p>
+            <!--<p>{{{content}}}</p>-->
+            <p>{{{imgPath}}}</p>
             <p>
                 <span class="glyphicon glyphicon-thumbs-up">赞</span> <span class="badge">{{upVoteCount}}</span>
                 <span class="glyphicon glyphicon-comment"></span><span class="badge">{{ commentCount}}</span>

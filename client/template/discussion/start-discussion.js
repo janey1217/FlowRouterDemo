@@ -19,14 +19,21 @@ Template.startDiscussion.events({
     e.preventDefault();
     var subject = $(e.target).find('[name=subject]').val();
     var content = template.$("#content").html();
-    var post ={subject:subject, content: content};
+    var re =  /<img(.+?)src=""*([^\s]+?)""*(\s|>)/ig;
+    var str = content.match(re);
+    console.log(str);
+    if(str!=""&&str != null)
+    {
+      console.log("hello");
+      str = str.slice(0,4);
+    }
+    var post ={subject:subject, content: content, imgPath:str};
     post= _.extend(post,{
           userId:Meteor.user()._id,
           userName: Meteor.user().profile.name,
           commentCount: 0,
           upVoteCount: 0
         });
-   // console.log(post);
     Discussion.insert(post,{ validationContext: "insert"}, function(error, result) {
       var myContext1 = Discussion.simpleSchema().namedContext("insert");
       console.log(myContext1.getErrorObject());

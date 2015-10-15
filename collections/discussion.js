@@ -56,6 +56,19 @@ schema.Discussion =new SimpleSchema({
     denyInsert: true,
     optional: true
   },
+
+  lastReplyAt: {
+    type: Date,
+    optional: true
+  },
+  lastReplyUser: {
+    type: String,
+    optional: true
+  },
+  imgPath: {
+    type: [String],
+    optional: true
+  }
 });
 
 Discussion.attachSchema(schema.Discussion);

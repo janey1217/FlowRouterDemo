@@ -26,12 +26,17 @@ Template.manageDiscussionList.events({
     var  id = template.$("#id").val();
     var subject = template.$("#subject").val();
     var content = template.$("#content").html();
-    var post = {subject: subject, content: content};
+    var re =  /<img(.+?)src=""*([^\s]+?)""*(\s|>)/ig;
+    var imgPath = content.match(re);
+    if(imgPath!=""&& imgPath != null) {
+      imgPath = imgPath.slice(0, 4);
+    }
+    var post = {subject: subject, content: content, imgPath: imgPath};
     Discussion.update(id, {$set: post}, function (error, result) {
       if(result)
       {
         console.log(result);
-       // FlowRouter.go("discussion");
+        // FlowRouter.go("discussion");
         window.location.reload();
       }
     });
