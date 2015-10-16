@@ -36,7 +36,23 @@ Template.manageDiscussionItem.events({
 
   "click button.topBtn ": function (e, template) {
     console.log(template.data._id);
-    // e.preventDefault();
-    console.log("hello");
+    e.preventDefault();
+    if (confirm("确定将该贴置顶")) {
+         var updateId = template.data._id;
+         Discussion.update({_id:updateId},{$set:{setTop: 1}}, function (error, result) {
+           console.log(result);
+         });
+       }
   },
+
+  "click button.cancelTopBtn ": function (e, template) {
+      console.log(template.data._id);
+      e.preventDefault();
+      if (confirm("确定将该贴取消置顶")) {
+           var updateId = template.data._id;
+           Discussion.update({_id:updateId},{$set:{setTop: 0}}, function (error, result) {
+             console.log(result);
+           });
+         }
+    },
 });

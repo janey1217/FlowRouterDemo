@@ -14,6 +14,10 @@ Meteor.publish('listDiscussion', function () {
   return Discussion.find();
 });
 
+//Meteor.publish('listDiscussion1', function (limitNum) {
+//  return Discussion.find({},{limit:limitNum});
+//});
+
 Meteor.publish('singleDiscussion', function (discId) {
   return Discussion.find({_id: discId});
 });

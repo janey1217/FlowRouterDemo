@@ -25,7 +25,7 @@ Template.comment.events({
             var myContext1 = Comments.simpleSchema().namedContext("insertComment");
             console.log(myContext1.getErrorObject());
             if(result) {
-                Discussion.update(discussionId,  {$inc: {commentCount: 1}});
+                Discussion.update(discussionId,  {$inc: {commentCount: 1}},{$set:{ lastReplyAt: new Date(), lastReplyUser: Meteor.user().profile.name }});
                 $(e.target).find('[name=comment]').val("");
             }
         });

@@ -4,7 +4,7 @@
             <p><img src="/images/luntan.jpg" /> <span class="glyphicon glyphicon glyphicon-user">{{userId}}</span> <span class="glyphicon glyphicon-time">{{dateFormate createdAt }}</span></p>
         </div>
         <div style="padding: 10px 20px; ">
-            <p><h3><a href="{{pathFor "singleDisc" discId=_id }}">{{subject}}</a></h3></p>
+            <p><h3><span style=" background:#5cb85c; color: #ffffff; text-underline: none">{{topFormate setTop}}</span><a href="{{pathFor "singleDisc" discId=_id }}">{{subject}}</a></h3></p>
             <p style=" ">{{{contentFormate content}}}...<a href="{{pathFor "singleDisc" discId=_id }}">《查看详情</a></p>
             <p>{{{imgPath}}}</p>
             <p>
