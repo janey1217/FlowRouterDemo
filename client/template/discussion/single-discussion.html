@@ -12,22 +12,22 @@
   <table class="table" >
     <tr>
       <th style=" width: 100px;" >
-        <img src="/images/luntan.jpg" />
+        <img style=" padding: 10px" src="/images/luntan.jpg" />
       </th>
-      <th class="list-group-item">
+      <th class="">
         <span style="font-size: 16px;">主题：{{subject}}</span>
         <br>
         <span>发帖时间:{{dateFormate createdAt }}</span><span><a href="#{{_id}}" id="{{_id}}">锚</a></span>
         <span><a href="{{pathFor "editDisc" discId=_id }}">编辑</a></span>
         <!--<span><a href="#" class="btn deleDisc">删除</a></span>-->
-        <span><a href="#" class="btn replyBtn">回复</a></span><span><a href="#" class="btn upVote">👍</a></span>
+        <span><a href="#reply" class="btn replyBtn">回复</a></span><span><a href="#" class="btn upVote">👍</a></span>
         <span class=" btn-danger" style=" float: right; margin-right: 10px; width: 50px; text-align: center" data-toggle="collapse" data-target="#content"><i class="glyphicon glyphicon-triangle-bottom"></i></span>
       </th>
     </tr>
-    <tr>
-      <td>发帖人</td>
+    <tr id="content">
+      <td style="width: 100px; padding: 10px;" >发帖人</td>
       <td>
-        <p id="content" style=" ">{{{content}}}</p>
+        <p  style=" height: auto ">{{{content}}}</p>
       </td>
     </tr>
   </table>

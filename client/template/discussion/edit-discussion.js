@@ -26,6 +26,7 @@ Template.editDiscussion.events({
     if(imgPath!=""&& imgPath != null) {
       imgPath = imgPath.slice(0, 4);
     }
+    console.log(imgPath);
     var post = {subject: subject, content: content, imgPath: imgPath};
     var updateId=this._id;
     Discussion.update(updateId, {$set: post}, function (error, result) {

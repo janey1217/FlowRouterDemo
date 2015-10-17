@@ -21,12 +21,13 @@ Template.startDiscussion.events({
     var content = template.$("#content").html();
     var re =  /<img(.+?)src=""*([^\s]+?)""*(\s|>)/ig;
     var str = content.match(re);
-    console.log(str);
+   // console.log(str);
     if(str!=""&&str != null)
     {
       str = str.slice(0,4);
       console.log("");
     }
+    console.log(str);
     var post ={subject:subject, content: content, imgPath:str};
     post= _.extend(post,{
           userId:Meteor.user()._id,
@@ -39,7 +40,7 @@ Template.startDiscussion.events({
       console.log(myContext1.getErrorObject());
       console.log(result);
       if(result) {
-        FlowRouter.go("discussion");
+        FlowRouter.go("discussion", {limitNum : 5});
       }
     });
   }

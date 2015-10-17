@@ -7,7 +7,7 @@
     <td>{{ dateFormate createdAt }}</td>
     <td>{{ dateFormate updatedAt }}</td>
     <td class="hidden-480">
-      <span class="label label-sm label-warning ">未置顶</span>
+      <span class="label label-sm label-warning ">{{setTop}}</span>
     </td>
     <td>
       <div class="btn-group">
@@ -20,9 +20,7 @@
         <button class="btn btn-xs btn-danger deleteBtn"  style=" margin-left: 5px;">
           <i class="glyphicon glyphicon-trash">删除</i>
         </button>
-        <button class="btn btn-xs btn-warning topBtn"  style=" margin-left: 5px;">
-          <i class="glyphicon glyphicon-flag">置顶</i>
-        </button>
+        {{{setTopFormate setTop}}}
       </div>
     </td>
   </tr>

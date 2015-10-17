@@ -68,6 +68,22 @@ schema.Discussion =new SimpleSchema({
   imgPath: {
     type: [String],
     optional: true
+  },
+  setTop: {
+    type: Number,
+    autoValue: function() {
+         if (this.isInsert) {
+           return 0;
+         }
+      if(this.isUpsert) {
+        return {$setOnInsert: 0};
+      }
+         //} else if (this.isUpsert) {
+         //  return {$setOnInsert: 0};
+         //} else {
+         //  this.unset();
+         //}
+       }
   }
 });
 

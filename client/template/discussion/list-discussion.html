@@ -1,26 +1,16 @@
-
 <template name="listDiscussion">
   <div class="table-responsive">
-      {{#each listDiscussions}}
-          {{> itemDiscussion}}
-      {{/each}}
-    <!--<table class="table">
-      <thead>
-      <tr>
-        <th>话题</th>
-        <th>内容</th>
-        <th>发起人</th>
-        <th>回复</th>
-        &lt;!&ndash;<th>浏览</th>&ndash;&gt;
-        &lt;!&ndash;<th>最后回复</th>&ndash;&gt;
-        <th>发布时间</th>
-      </tr>
-      </thead>
-      <tbody>
-      {{#each listDiscussions}}
-        {{> itemDiscussion}}
+    {{#each listDiscussions}}
+      {{> itemDiscussion}}
     {{/each}}
-      </tbody>
-    </table>-->
   </div>
+
+  <div style="margin: 5px 0;">
+    {{#if discussionCount}}
+      <a id="load-more" class="load-more">查看更多...</a>
+    {{else}}
+      <a class="loaded">数据加载完毕</a>
+    {{/if}}
+  </div>
+
 </template>

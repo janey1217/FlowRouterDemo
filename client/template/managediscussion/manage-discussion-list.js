@@ -31,6 +31,7 @@ Template.manageDiscussionList.events({
     if(imgPath!=""&& imgPath != null) {
       imgPath = imgPath.slice(0, 4);
     }
+    console.log(imgPath);
     var post = {subject: subject, content: content, imgPath: imgPath};
     Discussion.update(id, {$set: post}, function (error, result) {
       if(result)
