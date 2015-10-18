@@ -1,6 +1,17 @@
 /**
  * Created by jym on 2015/10/10.
  */
+
+Template.manageDiscussionItem.helpers({
+  maSetTop: function () {
+    if (this.setTop==1) {
+      return true;
+    } else {
+      return false;
+    }
+   },
+});
+
 Template.manageDiscussionItem.events({
   "click button.viewBtn ": function (e, template) {
     console.log(template.data._id);

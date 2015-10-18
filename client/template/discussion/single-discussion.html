@@ -18,7 +18,11 @@
         <span style="font-size: 16px;">主题：{{subject}}</span>
         <br>
         <span>发帖时间:{{dateFormate createdAt }}</span><span><a href="#{{_id}}" id="{{_id}}">锚</a></span>
-        <span><a href="{{pathFor "editDisc" discId=_id }}">编辑</a></span>
+
+        {{#if canModify}}
+          <span> <a href="{{pathFor "editDisc" discId=_id }}">编辑</a> </span>
+        {{/if}}
+
         <!--<span><a href="#" class="btn deleDisc">删除</a></span>-->
         <span><a href="#reply" class="btn replyBtn">回复</a></span><span><a href="#" class="btn upVote">👍</a></span>
         <span class=" btn-danger" style=" float: right; margin-right: 10px; width: 50px; text-align: center" data-toggle="collapse" data-target="#content"><i class="glyphicon glyphicon-triangle-bottom"></i></span>
@@ -38,8 +42,8 @@
   </table>
   {{#onlyIfLogin}}
     {{> comment}}
-    {{else}}
-     <p>请先登录！</p>
+  {{else}}
+    <p>请先登录！</p>
   {{/onlyIfLogin}}
 
 </template>

@@ -65,6 +65,10 @@ schema.Discussion =new SimpleSchema({
     type: String,
     optional: true
   },
+  lastReplyUserId: {
+      type: String,
+      optional: true
+    },
   imgPath: {
     type: [String],
     optional: true

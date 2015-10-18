@@ -18,16 +18,16 @@ Template.startDiscussion.events({
   "submit form": function (e, template) {
     e.preventDefault();
     var subject = $(e.target).find('[name=subject]').val();
+    var str = [];
     var content = template.$("#content").html();
-    var re =  /<img(.+?)src=""*([^\s]+?)""*(\s|>)/ig;
-    var str = content.match(re);
-   // console.log(str);
+    var imgSrc = template.$("#content").find('img').each(function () {
+      str.push($(this).attr('src'));
+    });
     if(str!=""&&str != null)
     {
       str = str.slice(0,4);
-      console.log("");
     }
-    console.log(str);
+   // console.log(str);
     var post ={subject:subject, content: content, imgPath:str};
     post= _.extend(post,{
           userId:Meteor.user()._id,

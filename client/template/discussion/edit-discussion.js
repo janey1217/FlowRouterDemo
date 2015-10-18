@@ -2,38 +2,38 @@
  * Created by jym on 2015/9/29.
  */
 
-Template.editDiscussion.onRendered( function () {
+Template.editDiscussion.onRendered(function () {
   $('#content').wysiwyg();
 });
 
 Template.editDiscussion.helpers({
-  errorMessage:function(field){
+  errorMessage: function (field) {
     myContext = Discussion.simpleSchema().namedContext("update");
     return myContext.keyErrorMessage(field);
   },
   discussions: function () {
-    return  Discussion.findOne({_id: FlowRouter.getParam("discId")});
+    return Discussion.findOne({_id: FlowRouter.getParam("discId")});
   },
 });
 
 Template.editDiscussion.events({
-  "submit form": function (e, params) {
+  "submit form": function (e, template) {
     e.preventDefault();
     var subject = $(e.target).find('[name=subject]').val();
-    var content = params.$("#content").html();
-    var re =  /<img(.+?)src=""*([^\s]+?)""*(\s|>)/ig;
-    var imgPath = content.match(re);
-    if(imgPath!=""&& imgPath != null) {
-      imgPath = imgPath.slice(0, 4);
+    var content = template.$("#content").html();
+    var str = [];
+    var imgSrc = template.$("#content").find('img').each(function () {
+      str.push($(this).attr('src'));
+    });
+    if (str != "" && str != null) {
+      str = str.slice(0, 4);
     }
-    console.log(imgPath);
-    var post = {subject: subject, content: content, imgPath: imgPath};
-    var updateId=this._id;
+    var post = {subject: subject, content: content, imgPath: str};
+    var updateId = this._id;
     Discussion.update(updateId, {$set: post}, function (error, result) {
-      if(result)
-      {
+      if (result) {
         console.log(result);
-        FlowRouter.go("discussion");
+        FlowRouter.go("discussion", {limitNum: 5});
       }
     });
   },

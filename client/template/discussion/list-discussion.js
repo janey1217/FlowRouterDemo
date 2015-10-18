@@ -5,7 +5,8 @@
 var PAGE_SIZE = 5;
 
 Template.listDiscussion.onCreated(function () {
-  //Session.set('currentPage', 1);
+ // var nowdatetime = new Date();
+ // console.log(moment(nowdatetime).format("YYYY-MM-DD  HH:mm:ss"));
 });
 
 Template.listDiscussion.helpers({
@@ -38,10 +39,7 @@ Template.listDiscussion.helpers({
 Template.listDiscussion.events({
   "click .load-more": function (e, template) {
     e.preventDefault();
-    //Session.set('currentPage', Session.get('currentPage') + 1);
-    //var pages = Session.get('currentPage') * 5;
     var pages = parseInt(FlowRouter.getParam("limitNum")) + PAGE_SIZE;
-
     FlowRouter.go("discussion", {limitNum: pages});
   }
 });

@@ -6,9 +6,8 @@
     <td>{{userId}}</td>
     <td>{{ dateFormate createdAt }}</td>
     <td>{{ dateFormate updatedAt }}</td>
-    <td class="hidden-480">
-      <span class="label label-sm label-warning ">{{setTop}}</span>
-    </td>
+    <td>{{lastReplyAt}}</td>
+    <td>{{lastReplyUserId}}</td>
     <td>
       <div class="btn-group">
         <button  class="btn btn-xs btn-info viewBtn" style=" margin-left: 5px;">
@@ -20,7 +19,11 @@
         <button class="btn btn-xs btn-danger deleteBtn"  style=" margin-left: 5px;">
           <i class="glyphicon glyphicon-trash">删除</i>
         </button>
-        {{{setTopFormate setTop}}}
+        {{#if maSetTop}}
+          <button class="btn btn-xs btn-warning cancelTopBtn"  style=" margin-left: 5px;"> <i class="glyphicon glyphicon-flag">取消</i> </button>
+        {{else}}
+          <button class="btn btn-xs btn-warning topBtn"  style=" margin-left: 5px;"> <i class="glyphicon glyphicon-flag">置顶</i> </button>
+        {{/if}}
       </div>
     </td>
   </tr>

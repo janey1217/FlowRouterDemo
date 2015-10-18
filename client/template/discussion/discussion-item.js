@@ -1,11 +1,15 @@
 /**
  * Created by jianyanmin on 15/10/7.
  */
+var PAGE_SIZE = 5;
 Template.discussionItem.helpers({
     commentItems: function () {
         console.log(FlowRouter.getParam("discId"));
         return Comments.find({discussionId: FlowRouter.getParam("discId")});
-    }
+    },
+  canModify: function () {
+    return this.userId == Meteor.userId()
+  }
 });
 
 Template.discussionItem.events({
