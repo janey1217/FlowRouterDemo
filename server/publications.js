@@ -26,7 +26,9 @@ Meteor.publish('comment', function () {
   return Discussion.find();
 });
 
-Meteor.publish('commentItem', function (discId) {
-  return Comments.find({discussionId: discId});
+Meteor.publish('commentItem', function (discId, limitNum) {
+  console.log("hello");
+  //, createdAt:{$gte:openPageTime }
+  return Comments.find({discussionId: discId},{sort: {createdAt: -1}, limit: limitNum } );
 });
 

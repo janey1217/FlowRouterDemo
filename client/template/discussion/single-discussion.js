@@ -3,10 +3,10 @@
  */
 
 Template.singleDiscussion.onCreated(function () {
-  var openPageTime = new Date();
-  this.subscribe('singleDiscussion', FlowRouter.getParam("discId"));
-  this.subscribe('commentItem', FlowRouter.getParam("discId"));
-  //console.log(moment(nowdatetime).format("YYYY-MM-DD  HH:mm:ss"));
+   openPageTime = new Date();
+  //this.subscribe('singleDiscussion', FlowRouter.getParam("discId"));
+  //this.subscribe('commentItem', FlowRouter.getParam("discId"), parseInt(FlowRouter.getQueryParam("limitNum"))+1);
+ // console.log(moment(nowdatetime).format("YYYY-MM-DD  HH:mm:ss"));
 });
 
 Template.singleDiscussion.helpers({
