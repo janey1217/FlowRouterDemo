@@ -1,12 +1,13 @@
 /**
  * Created by jym on 2015/9/30.
  */
-
 Template.singleDiscussion.onCreated(function () {
-   openPageTime = new Date();
-  //this.subscribe('singleDiscussion', FlowRouter.getParam("discId"));
-  //this.subscribe('commentItem', FlowRouter.getParam("discId"), parseInt(FlowRouter.getQueryParam("limitNum"))+1);
- // console.log(moment(nowdatetime).format("YYYY-MM-DD  HH:mm:ss"));
+  var openPageTime = new Date();
+  Session.set('setPageTime', openPageTime);
+  this.subscribe('singleDiscussion', FlowRouter.getParam("discId"));
+  this.subscribe('commentItem', FlowRouter.getParam("discId") , parseInt(FlowRouter.getQueryParam("limitNum"))+1, Session.get('setPageTime'));
+  this.subscribe('commentItemAfter', FlowRouter.getParam("discId") , Session.get('setPageTime'));
+  //console.log("时间"+Session.get('setPageTime'));
 });
 
 Template.singleDiscussion.helpers({

@@ -26,9 +26,14 @@ Meteor.publish('comment', function () {
   return Discussion.find();
 });
 
-Meteor.publish('commentItem', function (discId, limitNum) {
-  console.log("hello");
-  //, createdAt:{$gte:openPageTime }
-  return Comments.find({discussionId: discId},{sort: {createdAt: -1}, limit: limitNum } );
+Meteor.publish('commentItem', function (discId, limitNum, setPageTime) {
+  //console.log("sassa"+limitNum);
+  return Comments.find({discussionId: discId, createdAt: {$lte:setPageTime}},{sort: {createdAt: -1}, limit: limitNum } );
 });
+
+Meteor.publish('commentItemAfter', function (discId,setPageTime) {
+  //console.log("sassa"+limitNum);
+  return Comments.find({discussionId: discId, createdAt: {$gt:setPageTime}});
+});
+
 

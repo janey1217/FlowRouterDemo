@@ -4,7 +4,8 @@
 var PAGE_SIZE = 5;
 Template.discussionItem.helpers({
   commentItems: function () {
-    return Comments.find({discussionId: FlowRouter.getParam("discId")},{sort: {createdAt: 1},limit: parseInt(FlowRouter.getQueryParam("limitNum"))+1});
+    //,limit: parseInt(FlowRouter.getQueryParam("limitNum"))+1
+    return Comments.find({discussionId: FlowRouter.getParam("discId")},{sort: {createdAt: 1}});
   },
   canModify: function () {
     return this.userId == Meteor.userId()
@@ -12,7 +13,7 @@ Template.discussionItem.helpers({
   discussionCount: function () {
     var limit = parseInt(FlowRouter.getQueryParam("limitNum"));
     console.log("shuliang"+limit);
-    var count = Comments.find().count();
+    var count = Comments.find({createdAt: {$lte:Session.get('setPageTime')}}).count();
     console.log("xianshi"+count);
     return count == limit + 1;
   }
@@ -51,6 +52,7 @@ Template.discussionItem.events({
     e.preventDefault();
     var pages = parseInt(FlowRouter.getQueryParam("limitNum")) + PAGE_SIZE;
     FlowRouter.go("/singlediscussion/:discId",{discId: FlowRouter.getParam("discId")},{limitNum: pages });
+    Meteor.subscribe('commentItem', FlowRouter.getParam("discId") , parseInt(pages+1), Session.get('setPageTime'));
   }
 });
 

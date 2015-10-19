@@ -14,9 +14,9 @@
               style=" background:#5cb85c; color: #ffffff; text-underline: none">顶
         </span>
         {{/if}}
-        <a href="{{pathFor "/singlediscussion/:discId/:page1/:page2" discId=_id  query="limitNum=5"}}">{{subject}}</a></h3></p>
+        <a href="{{pathFor "/singlediscussion/:discId" discId=_id  query="limitNum=5"}}">{{subject}}</a></h3></p>
       <p style=" ">{{contentFormate}}...
-        <a href="{{pathFor "singleDisc" discId=_id  }}">《查看详情</a>
+        <a href="{{pathFor "/singlediscussion/:discId" discId=_id  query="limitNum=5"}}">《查看详情</a>
       </p>
 
       <p>

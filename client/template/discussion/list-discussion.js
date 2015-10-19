@@ -5,8 +5,8 @@
 var PAGE_SIZE = 5;
 
 Template.listDiscussion.onCreated(function () {
- // var nowdatetime = new Date();
- // console.log(moment(nowdatetime).format("YYYY-MM-DD  HH:mm:ss"));
+ /* var nowdatetime = new Date();
+  console.log(moment(nowdatetime).format("YYYY-MM-DD  HH:mm:ss"));*/
 });
 
 Template.listDiscussion.helpers({
