@@ -10,12 +10,10 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="{{pathFor 'home'}}">MyApplication</a>
-          <!--<a class="btn btn-default navbar-btn dropdown-toggle "></a>-->
         </div>
         <div class="collapse navbar-collapse" id="navigation">
           <ul class="nav navbar-nav navbar-right">
-            <li  class="btn-danger"><a href="{{ pathFor 'discussion' limitNum=5 }}" >Discussion</a></li>
-            <!--<li  class=""><a href="{{ pathFor 'discussion1' limitNum=5 }}" >DiscussionPagination</a></li>-->
+            <li  class="btn-danger"><a href="{{ pathFor 'discussion'}}" >Discussion</a></li>
             <li><a href="{{pathFor 'post'}}" class="">PostArticle</a></li>
             <li><a class="" href="{{ pathFor 'manageDiscussion'}}">manageDiscussion</a></li>
             {{> loginButtons}}

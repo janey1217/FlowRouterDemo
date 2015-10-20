@@ -26,7 +26,7 @@ Meteor.publish('comment', function () {
   return Discussion.find();
 });
 
-Meteor.publish('commentItem', function (discId, limitNum, setPageTime) {
+Meteor.publish('commentItemBefore', function (discId, limitNum, setPageTime) {
   //console.log("sassa"+limitNum);
   return Comments.find({discussionId: discId, createdAt: {$lte:setPageTime}},{sort: {createdAt: -1}, limit: limitNum } );
 });

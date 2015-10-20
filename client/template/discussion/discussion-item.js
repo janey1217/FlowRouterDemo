@@ -1,21 +1,32 @@
 /**
  * Created by jianyanmin on 15/10/7.
  */
-var PAGE_SIZE = 5;
+var PAGE_SIZE = 10;
+var limit;
+var setPageTime;
+Template.discussionItem.onCreated( function () {
+  setPageTime = new Date();
+  limit = new ReactiveVar(PAGE_SIZE);
+  var template = this;
+  template.autorun(function (){
+    template.subscribe('commentItemBefore', FlowRouter.getParam("discId") , parseInt(limit.get()+1), setPageTime);
+  });
+  template.subscribe('commentItemAfter', FlowRouter.getParam("discId") , setPageTime);
+});
 Template.discussionItem.helpers({
-  commentItems: function () {
+  commentItemsBefore: function () {
     //,limit: parseInt(FlowRouter.getQueryParam("limitNum"))+1
-    return Comments.find({discussionId: FlowRouter.getParam("discId")},{sort: {createdAt: 1}});
+    return Comments.find({discussionId: FlowRouter.getParam("discId"),createdAt: {$lte: setPageTime}},{sort: {createdAt: -1}, limit: limit.get()}).fetch().reverse();
+  },
+  commentItemsAfter: function () {
+    return Comments.find({createdAt: {$gt: setPageTime}},{sort: {createdAt: 1}});
   },
   canModify: function () {
     return this.userId == Meteor.userId()
   },
   discussionCount: function () {
-    var limit = parseInt(FlowRouter.getQueryParam("limitNum"));
-    console.log("shuliang"+limit);
-    var count = Comments.find({createdAt: {$lte:Session.get('setPageTime')}}).count();
-    console.log("xianshi"+count);
-    return count == limit + 1;
+    var count = Comments.find({createdAt: {$lte: setPageTime}}).count();
+    return count == limit.get() + 1;
   }
 });
 
@@ -50,22 +61,6 @@ Template.discussionItem.events({
   },
   "click .load-more": function (e, template) {
     e.preventDefault();
-    var pages = parseInt(FlowRouter.getQueryParam("limitNum")) + PAGE_SIZE;
-    FlowRouter.go("/singlediscussion/:discId",{discId: FlowRouter.getParam("discId")},{limitNum: pages });
-    Meteor.subscribe('commentItem', FlowRouter.getParam("discId") , parseInt(pages+1), Session.get('setPageTime'));
+    limit.set(limit.get()+PAGE_SIZE);
   }
 });
-
-//upvote: function(postId) {
-//    check(this.userId, String);
-//    check(postId, String);
-//    var post = Posts.findOne(postId);
-//    if (!post)
-//        throw new Meteor.Error('invalid', 'Post not found');
-//    if (_.include(post.upvoters, this.userId))
-//        throw new Meteor.Error('invalid', 'Already upvoted this post');
-//    Posts.update(post._id, {
-//        $addToSet: {upvoters: this.userId},
-//        $inc: {votes: 1}
-//    });
-//}

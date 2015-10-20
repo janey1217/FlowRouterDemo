@@ -2,44 +2,32 @@
  * Created by jym on 2015/9/29.
  */
 
-var PAGE_SIZE = 5;
-
+var PAGE_SIZE = 10;
+var limit;
 Template.listDiscussion.onCreated(function () {
- /* var nowdatetime = new Date();
-  console.log(moment(nowdatetime).format("YYYY-MM-DD  HH:mm:ss"));*/
+  limit = new ReactiveVar(PAGE_SIZE);
+  var template = this;
+  template.autorun(function () {
+    template.subscribe("listDiscussion", parseInt(limit.get()+1));
+  });
 });
 
 Template.listDiscussion.helpers({
   listDiscussions: function () {
-    //console.log(parseInt(FlowRouter.getParam("limitNum")));
-    //console.log(parseInt("显示数量"+(parseInt(FlowRouter.getParam("limitNum"))-1)));
-    //return Discussion.find({},{sort: {setTop :-1,createdAt: -1}});
     return Discussion.find({}, {
       sort: {setTop: -1, createdAt: -1},
-      limit: (parseInt(FlowRouter.getParam("limitNum")))
+      limit: (limit.get())
     });
   },
   discussionCount: function () {
-    var limit = parseInt(FlowRouter.getParam("limitNum"));
     var count = Discussion.find().count();
-    console.log(count);
-    return count == limit + 1;
-
-/*    var currentPage = Session.get('currentPage');
-    console.log("请求总数量" + count);
-    if (count > (currentPage * 5)) {
-      console.log("hello");
-      return true;
-    } else {
-      return false;
-    }*/
+    return count == limit.get() + 1;
   }
 });
 
 Template.listDiscussion.events({
   "click .load-more": function (e, template) {
     e.preventDefault();
-    var pages = parseInt(FlowRouter.getParam("limitNum")) + PAGE_SIZE;
-    FlowRouter.go("discussion", {limitNum: pages});
+    limit.set(limit.get()+PAGE_SIZE);
   }
 });

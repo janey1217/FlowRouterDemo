@@ -34,9 +34,13 @@
     {{/if}}
   </div>
   <table class="table" >
-    {{#each commentItems}}
+    {{#each commentItemsBefore}}
       {{> commentItem}}
     {{/each}}
+
+    {{#each commentItemsAfter}}
+          {{> commentItem}}
+        {{/each}}
   </table>
   {{#onlyIfLogin}}
     {{> comment}}
