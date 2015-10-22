@@ -19,6 +19,7 @@ Template.discussionItem.helpers({
     return Comments.find({discussionId: FlowRouter.getParam("discId"),createdAt: {$lte: setPageTime}},{sort: {createdAt: -1}, limit: limit.get()}).fetch().reverse();
   },
   commentItemsAfter: function () {
+
     return Comments.find({createdAt: {$gt: setPageTime}},{sort: {createdAt: 1}});
   },
   canModify: function () {

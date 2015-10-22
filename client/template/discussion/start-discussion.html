@@ -1,4 +1,5 @@
 <template name="startDiscussion">
+  {{#onlyIfLogin}}
   <div class="row">
     <div class="col-md-10">
       <form role="form">
@@ -91,4 +92,7 @@
     <div class="col-md-6">
     </div>
   </div>
+    {{else}}
+    <p>请先登录</p>
+    {{/onlyIfLogin}}
 </template>

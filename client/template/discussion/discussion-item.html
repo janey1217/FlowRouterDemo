@@ -25,7 +25,6 @@
       </td>
     </tr>
   </table>
-  <a ></a>
   <div style="margin: 5px 0;">
     {{#if discussionCount}}
       <a id="load-more" class="load-more">查看更多...</a>
@@ -33,7 +32,7 @@
       <a class="loaded">数据加载完毕</a>
     {{/if}}
   </div>
-  <table class="table" >
+
     {{#each commentItemsBefore}}
       {{> commentItem}}
     {{/each}}
@@ -41,7 +40,7 @@
     {{#each commentItemsAfter}}
           {{> commentItem}}
         {{/each}}
-  </table>
+
   {{#onlyIfLogin}}
     {{> comment}}
   {{else}}
